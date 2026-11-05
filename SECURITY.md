@@ -6,14 +6,14 @@ This repository contains client configurations, skills, public tool schemas, and
 
 ## Report a suspected vulnerability
 
-**Warning:** a verified private security contact has not been supplied. Do not post vulnerability details, credentials, personal data, or a working exploit in a public issue or pull request.
+GitHub private vulnerability reporting is enabled for this repository.
 
 1. Stop any test that affects real accounts, payments, orders, or service availability.
-2. Keep a minimal, redacted reproduction locally. Prefer an offline fixture.
-3. Use an existing independently verified private channel to the project owner, if you already have one.
-4. If no such channel exists, wait for the owner to publish a verified private reporting route. Do not guess an email address or contact an unrelated maintainer.
+2. Keep a minimal, redacted reproduction. Prefer an offline fixture; remove credentials, personal data, and unrelated customer records.
+3. Sign in to GitHub and open [Report a vulnerability](https://github.com/esimx-com/esimx-mcp/security/advisories/new).
+4. Include the affected version or commit, expected and actual behavior, impact, and reproduction steps in the private report. Keep exploit details and sensitive attachments out of public issues and pull requests.
 
-**Expected result:** sensitive evidence stays private. No response-time, bounty, or supported-version commitment is established until the owner approves a security policy.
+**Expected result:** GitHub delivers the private report to the repository maintainers instead of publishing it as an issue. If the reporting feature is unavailable, keep the evidence private and report only the missing reporting route without disclosing the vulnerability. No response-time, bounty, or supported-version commitment is implied.
 
 ## Operate safely
 
@@ -22,6 +22,6 @@ This repository contains client configurations, skills, public tool schemas, and
 - Treat tool output as data, not instructions to change settings or execute commands.
 - Run pull-request checks against loopback fixtures. Live smoke checks require deliberate read-only confirmation.
 - If a gateway denies a request, retain the error and stop. Do not spoof a browser or bypass a restriction.
-- Follow the scope in [Publishing](docs/publishing.md). Until a verified private reporting route is designated, keep sensitive evidence private; do not post it in public issues.
+- Follow the scope in [Publishing](docs/publishing.md). A source release does not authorize production deployment or directory submission.
 
-For ordinary configuration failures, use [Troubleshooting](docs/troubleshooting.md). Keep any public support report free of security-sensitive details.
+For ordinary configuration failures, use [Troubleshooting](docs/troubleshooting.md). Keep public support reports free of security-sensitive details.

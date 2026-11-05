@@ -9,7 +9,7 @@ The delivered project is usable locally. The remaining publication inputs are se
 | Target | Required input |
 | --- | --- |
 | Repository or source release | Canonical source: https://github.com/esimx-com/esimx-mcp. MIT is approved; retain the license and third-party notices. A tagged release remains a separate action. |
-| Private vulnerability reporting | A verified private reporting route. Do not invent an email or direct sensitive reports into public issues. |
+| Private vulnerability reporting | Enabled through [GitHub private reporting](https://github.com/esimx-com/esimx-mcp/security/advisories/new). Keep sensitive reports out of public issues. |
 | Claude plugin/marketplace | The known eSIMX brand is the author/owner. No personal maintainer is required for local use. Public listing claims need separate approval. |
 | MCP Registry | Actual ownership proof for the proposed `com.esimx` namespace, followed by explicit submission authorization. |
 | Glama | Real GitHub repository and approved GitHub maintainer usernames. A brand name is not a GitHub login. |
@@ -26,7 +26,7 @@ Keep unknown values null or empty in `project.json`. `com.esimx/mcp` is a propos
 
    For a fork, replace the URL deliberately. This changes `project.json` and generated local metadata only. It does not change a git remote or contact a directory.
 2. Enter only approved GitHub usernames in `project.json`'s `maintainers` array. For a GitHub repository, generation emits `glama.json` only when this array is nonempty. Until then, `configs/glama.template.json` is a template, not a submission.
-3. Enter an approved private `securityContact` and update `SECURITY.md` with the actual reporting procedure. Do not advertise an unverified contact.
+3. `securityContact` records the verified GitHub private-reporting route. Keep `SECURITY.md` aligned with that enabled feature. A fork must configure its own route before advertising it.
 4. MIT is the approved project license. Keep `project.json`, `package.json`, the root entry in `package-lock.json`, `pyproject.toml`, and `LICENSE` consistent. Retain the separate third-party terms in [Third-party notices](../THIRD_PARTY_NOTICES.md).
 5. For a version change, update `project.json`, `package.json`, and `pyproject.toml`, then refresh both lockfiles deliberately. Run `npm run generate`.
 6. Run all offline checks and strict plugin validation in [Maintenance](maintenance.md). Review the exact files and any nonblocking listing advisories.

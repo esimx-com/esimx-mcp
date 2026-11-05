@@ -7,7 +7,7 @@
   "registryName": "com.esimx/mcp",
   "repository": "https://github.com/esimx-com/esimx-mcp",
   "license": "MIT",
-  "securityContact": null,
+  "securityContact": "https://github.com/esimx-com/esimx-mcp/security/advisories/new",
   "maintainers": [
     "ParaGenie"
   ]

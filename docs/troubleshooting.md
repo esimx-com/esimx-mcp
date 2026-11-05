@@ -36,4 +36,4 @@ The pinned TypeScript and Python SDK examples passed public discovery and both t
 
 ## 3. Escalate without leaking data
 
-Use the non-sensitive bug template only after redaction. Include the expected and actual result, exact offline command, and whether a real public request was made. Use the canonical repository for non-sensitive reports; a verified private security reporting route is still pending. Sensitive evidence follows [SECURITY.md](../SECURITY.md), not a public issue.
+Use the non-sensitive bug template only after redaction. Include the expected and actual result, exact offline command, and whether a real public request was made. Use the canonical repository for non-sensitive reports and GitHub private vulnerability reporting for sensitive findings. Sensitive evidence follows [SECURITY.md](../SECURITY.md), not a public issue.

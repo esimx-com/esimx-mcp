@@ -30,7 +30,7 @@ claude mcp add --transport http esimx https://api.esimx.com/mcp
 
 **Expected result:** discovery shows `search_plans` and `compare_trip_options`. A browser GET is not a connection test; this endpoint accepts MCP POST requests. If discovery fails, use [Troubleshooting](docs/troubleshooting.md).
 
-The pinned TypeScript and Python SDK examples passed a public read-only check on 2026-11-04: discovery, search, and comparison succeeded. See [Verification record](docs/verification.md) for the exact scope and commands. Native configuration support and SDK success do not certify the listed AI applications. A previous Python urllib request was denied by Cloudflare; account plans, workspace policy, client versions, and network routes can still restrict access.
+The pinned TypeScript and Python SDK examples passed a public read-only check on 2026-11-04: discovery, search, and comparison succeeded. GitHub installation in Claude Code 2.1.318 passed on 2026-11-05, but that client skipped `search_plans` because its input Schema contains top-level `allOf`; only the comparison tool was exposed and successfully called. See [Verification record](docs/verification.md) for the exact scope, current limitation, and commands. Native configuration support and SDK success do not certify the listed AI applications. A previous Python urllib request was denied by Cloudflare; account plans, workspace policy, client versions, and network routes can still restrict access.
 
 ## 2. Use the tools
 
@@ -65,11 +65,11 @@ npm run test:python
 
 - [Protocol](docs/protocol.md) — Streamable HTTP, SDK version lane, and errors.
 - [Privacy](docs/privacy.md) — trip data and third-party client handling.
-- [Security](SECURITY.md) — safe reporting while a private contact is pending.
+- [Security](SECURITY.md) — private vulnerability reporting through GitHub.
 - [Contributing](CONTRIBUTING.md) — local change procedure.
 - [Publishing](docs/publishing.md) — release gates and unresolved ownership inputs.
 - [Changelog](CHANGELOG.md) — local release scope.
 
 Source repository: [esimx-com/esimx-mcp](https://github.com/esimx-com/esimx-mcp). Original repository material is licensed under [MIT](LICENSE); copied third-party material retains its [upstream terms and notices](THIRD_PARTY_NOTICES.md). The code license does not grant unlimited service access or trademark rights.
 
-A verified private security contact and domain-namespace proof remain pending. `com.esimx/mcp` is a proposed Registry name, not a registration claim. No marketplace listing, domain verification, or universal client approval is claimed.
+Private vulnerability reports use [GitHub private reporting](https://github.com/esimx-com/esimx-mcp/security/advisories/new). Domain-namespace proof remains pending. `com.esimx/mcp` is a proposed Registry name, not a registration claim. No marketplace listing, domain verification, or universal client approval is claimed.

@@ -12,6 +12,10 @@
 - Deterministic generation, metadata checks, and offline CI.
 - English client guides, tool/data references, and maintenance policies.
 
+### Known compatibility issue
+
+Claude Code 2.1.318 installs and connects successfully but skips `search_plans` because the live input Schema contains top-level `allOf`. An actual comparison returned `ok`; complete two-tool acceptance is not yet satisfied. The pinned official TypeScript/Python SDKs support both tools.
+
 ### Publication status
 
-Source repository: https://github.com/esimx-com/esimx-mcp. Original project material is MIT-licensed. Private security reporting and domain verification remain pending. No tagged release, Registry registration, public directory listing, or named AI-application live certification is claimed.
+Source repository: https://github.com/esimx-com/esimx-mcp. Original project material is MIT-licensed. GitHub private vulnerability reporting is enabled; domain verification remains pending. No tagged release, Registry registration, public directory listing, or named AI-application live certification is claimed.

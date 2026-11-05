@@ -23,4 +23,4 @@ Anonymous access does not mean that network activity is unobservable. The MCP se
 - Client trust and approval settings remain under the user's control; the configurations do not grant blanket approval.
 - This repository is not a privacy notice for the production service and does not promise retention periods or compliance certification.
 
-Use [SECURITY.md](../SECURITY.md) for sensitive findings. A verified private contact is pending; do not put confidential evidence in a public issue.
+Use [SECURITY.md](../SECURITY.md) for sensitive findings. GitHub private vulnerability reporting is enabled; do not put confidential evidence in a public issue.
