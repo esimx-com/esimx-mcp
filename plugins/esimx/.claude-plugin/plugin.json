@@ -1,0 +1,15 @@
+{
+  "name": "esimx",
+  "version": "1.0.0",
+  "description": "Search eSIMX eSIM plans and compare whole-trip or local-country options. Read-only USD catalog.",
+  "author": {
+    "name": "eSIMX"
+  },
+  "repository": "https://github.com/esimx-com/esimx-mcp",
+  "license": "MIT",
+  "keywords": [
+    "esim",
+    "travel",
+    "mcp"
+  ]
+}

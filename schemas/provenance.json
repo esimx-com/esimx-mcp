@@ -1,0 +1,15 @@
+{
+  "snapshot": "schemas/tools.json",
+  "source": {
+    "repository": "sim-retail",
+    "path": "sim-portal/src/main/resources/mcp/public-tools.json"
+  },
+  "sha256": "e1605e1f479671362aa3da478a6665742f78897711988ab1c6141352715ea954",
+  "capturedOn": "2026-11-04",
+  "format": "Exact source bytes; UTF-8 JSON. Public tool definitions only.",
+  "registry": {
+    "snapshot": "schemas/registry.schema.json",
+    "source": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+    "sha256": "3fba09590c99f61735d234822279f4223fab9e300c0a81e81c91ab62a4114de0"
+  }
+}

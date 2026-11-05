@@ -1,0 +1,31 @@
+{
+  "name": "esimx-mcp",
+  "version": "1.0.0",
+  "description": "Native client configurations and official SDK examples for the read-only eSIMX MCP catalog.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "check": "node scripts/check.mjs",
+    "metadata": "node scripts/metadata.mjs",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test tests/contracts/*.test.mjs tests/clients/*.test.mjs",
+    "test:clients": "npm run build && node --test tests/clients/*.test.mjs",
+    "test:python": "uv run --locked python -m unittest discover -s tests/clients -p '*_test.py' -v",
+    "example:typescript": "npm run build && node dist/examples/typescript/client.js",
+    "example:python": "uv run --locked python examples/python/client.py",
+    "smoke": "npm run build && node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "5.9.3"
+  }
+}

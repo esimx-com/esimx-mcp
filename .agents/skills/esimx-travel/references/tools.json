@@ -1,0 +1,130 @@
+[
+  {
+    "name": "search_plans",
+    "description": "Search the public eSIMX catalog. USD prices, not live supplier inventory.",
+    "inputSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "destination": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 365
+        },
+        "min_data_mb": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        },
+        "data_mode": {
+          "type": "string",
+          "enum": [
+            "total",
+            "daily"
+          ],
+          "default": "total"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "default": 10
+        }
+      },
+      "required": [
+        "destination"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "data_mode": {
+                "const": "daily"
+              }
+            },
+            "required": [
+              "data_mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "days",
+              "min_data_mb"
+            ]
+          }
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "compare_trip_options",
+    "description": "Compare one whole-trip plan with one local plan per country in the eSIMX catalog.",
+    "inputSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "stops": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "properties": {
+              "destination": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "days": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 365
+              },
+              "min_data_mb": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1048576
+              }
+            },
+            "required": [
+              "destination",
+              "days",
+              "min_data_mb"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "data_mode": {
+          "type": "string",
+          "enum": [
+            "total",
+            "daily"
+          ],
+          "default": "total"
+        }
+      },
+      "required": [
+        "stops"
+      ],
+      "additionalProperties": false
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  }
+]

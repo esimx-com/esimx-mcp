@@ -1,0 +1,23 @@
+name: Feature request
+description: Propose a read-only catalog integration improvement.
+title: "[Feature] "
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Problem to solve
+      description: State the client and user task. Do not include private travel details.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Required result
+      description: Give a checkable completion condition and any official format reference.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and alternatives
+      description: Keep the proposal within read-only catalog integration. Publishing needs separate approval.

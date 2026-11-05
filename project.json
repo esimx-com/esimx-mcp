@@ -1,0 +1,14 @@
+{
+  "name": "esimx-mcp",
+  "version": "1.0.0",
+  "title": "eSIMX Travel Planner",
+  "description": "Search eSIMX eSIM plans and compare whole-trip or local-country options. Read-only USD catalog.",
+  "endpoint": "https://api.esimx.com/mcp",
+  "registryName": "com.esimx/mcp",
+  "repository": "https://github.com/esimx-com/esimx-mcp",
+  "license": "MIT",
+  "securityContact": null,
+  "maintainers": [
+    "ParaGenie"
+  ]
+}

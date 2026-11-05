@@ -1,0 +1,14 @@
+{
+  "name": "esimx-local",
+  "description": "eSIMX travel-planning plugin marketplace.",
+  "version": "1.0.0",
+  "owner": {
+    "name": "eSIMX"
+  },
+  "plugins": [
+    {
+      "name": "esimx",
+      "source": "./plugins/esimx"
+    }
+  ]
+}

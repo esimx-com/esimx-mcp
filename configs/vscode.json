@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "esimx": {
+      "type": "http",
+      "url": "https://api.esimx.com/mcp"
+    }
+  }
+}

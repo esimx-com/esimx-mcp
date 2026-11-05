@@ -1,0 +1,38 @@
+name: Bug report
+description: Report a reproducible non-security integration defect.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "For vulnerabilities, use SECURITY.md. Do not include credentials, personal itineraries, private logs, or exploit details."
+  - type: input
+    id: client
+    attributes:
+      label: Client and version
+      placeholder: Product, version, operating system
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Prefer an offline fixture. State whether any authorized live call was made.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result and redacted error
+      description: Include HTTP status and Retry-After if relevant. Remove sensitive content.
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Checks already performed
