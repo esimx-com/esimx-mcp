@@ -4,8 +4,8 @@
     "repository": "sim-retail",
     "path": "sim-portal/src/main/resources/mcp/public-tools.json"
   },
-  "sha256": "e1605e1f479671362aa3da478a6665742f78897711988ab1c6141352715ea954",
-  "capturedOn": "2026-11-04",
+  "sha256": "8329ff9a937cad8a7aa78db632dbd6c56927178348ecc9747236b7516f7aa4eb",
+  "capturedOn": "2026-11-05",
   "format": "Exact source bytes; UTF-8 JSON. Public tool definitions only.",
   "registry": {
     "snapshot": "schemas/registry.schema.json",

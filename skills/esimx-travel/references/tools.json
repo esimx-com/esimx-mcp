@@ -40,26 +40,22 @@
         "destination"
       ],
       "additionalProperties": false,
-      "allOf": [
-        {
-          "if": {
-            "properties": {
-              "data_mode": {
-                "const": "daily"
-              }
-            },
-            "required": [
-              "data_mode"
-            ]
-          },
-          "then": {
-            "required": [
-              "days",
-              "min_data_mb"
-            ]
+      "if": {
+        "properties": {
+          "data_mode": {
+            "const": "daily"
           }
-        }
-      ]
+        },
+        "required": [
+          "data_mode"
+        ]
+      },
+      "then": {
+        "required": [
+          "days",
+          "min_data_mb"
+        ]
+      }
     },
     "annotations": {
       "readOnlyHint": true,

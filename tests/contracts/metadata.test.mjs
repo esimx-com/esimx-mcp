@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, relative } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
+import { AjvJsonSchemaValidator } from '@modelcontextprotocol/sdk/validation/ajv';
 import { generate, generatedFiles, json, projectRoot, readProject, validateRepository } from '../../scripts/generate.mjs';
 import { checkContracts, checkDocumentLinks } from '../../scripts/check.mjs';
 
@@ -58,13 +59,52 @@ test('exported schemas preserve exact public tool constraints', () => {
   const [search, compare] = load(projectRoot, 'schemas/tools.json');
   assert.equal(search.name, 'search_plans');
   assert.deepEqual(search.inputSchema.required, ['destination']);
-  assert.deepEqual(search.inputSchema.allOf[0].then.required, ['days', 'min_data_mb']);
+  assert.deepEqual(search.inputSchema.if.required, ['data_mode']);
+  assert.equal(search.inputSchema.if.properties.data_mode.const, 'daily');
+  assert.deepEqual(search.inputSchema.then.required, ['days', 'min_data_mb']);
   assert.equal(search.inputSchema.properties.limit.maximum, 20);
   assert.equal(compare.name, 'compare_trip_options');
   assert.equal(compare.inputSchema.properties.stops.minItems, 2);
   assert.equal(compare.inputSchema.properties.stops.maxItems, 10);
   assert.deepEqual(compare.inputSchema.properties.stops.items.required, ['destination', 'days', 'min_data_mb']);
   for (const tool of [search, compare]) assert.deepEqual(tool.annotations, { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false });
+});
+
+test('public tool input roots are compatible with the Anthropic native loader', () => {
+  for (const tool of load(projectRoot, 'schemas/tools.json')) {
+    for (const keyword of ['allOf', 'anyOf', 'oneOf']) {
+      assert.ok(!Object.hasOwn(tool.inputSchema, keyword), `${tool.name}: root ${keyword} is unsupported`);
+    }
+  }
+});
+
+test('official SDK validation retains daily requirements, optional total fields, types and bounds', () => {
+  const [search] = load(projectRoot, 'schemas/tools.json');
+  const validate = new AjvJsonSchemaValidator().getValidator(search.inputSchema);
+  const complete = { destination: 'Synthetic country', data_mode: 'daily', days: 7, min_data_mb: 1024 };
+  const valid = [
+    { destination: 'Synthetic country' },
+    { destination: 'Synthetic country', data_mode: 'total' },
+    { destination: 'Synthetic country', data_mode: 'total', days: 7 },
+    { destination: 'Synthetic country', data_mode: 'total', min_data_mb: 1024 },
+    complete,
+    { ...complete, days: 1, min_data_mb: 1, limit: 1 },
+    { ...complete, days: 365, min_data_mb: 1048576, limit: 20 },
+  ];
+  const invalid = [
+    { destination: 'Synthetic country', data_mode: 'daily' },
+    { ...complete, data_mode: null }, { ...complete, data_mode: 'weekly' }, { ...complete, data_mode: 1 },
+    { ...complete, destination: null }, { ...complete, extra: true },
+    { ...complete, limit: 0 }, { ...complete, limit: 21 },
+  ];
+  for (const [field, maximum] of [['days', 365], ['min_data_mb', 1048576]]) {
+    const missing = { ...complete };
+    delete missing[field];
+    invalid.push(missing);
+    for (const value of [null, '1', 1.5, true, 0, maximum + 1]) invalid.push({ ...complete, [field]: value });
+  }
+  for (const args of valid) assert.equal(validate(args).valid, true, JSON.stringify(args));
+  for (const args of invalid) assert.equal(validate(args).valid, false, JSON.stringify(args));
 });
 
 test('all metadata contracts work locally without a repository or identities', (t) => {
