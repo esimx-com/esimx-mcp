@@ -30,7 +30,7 @@ claude mcp add --transport http esimx https://api.esimx.com/mcp
 
 **Expected result:** discovery shows `search_plans` and `compare_trip_options`. A browser GET is not a connection test; this endpoint accepts MCP POST requests. If discovery fails, use [Troubleshooting](docs/troubleshooting.md).
 
-The pinned TypeScript and Python SDK examples passed a public read-only check on 2026-11-04: discovery, search, and comparison succeeded. GitHub installation in Claude Code 2.1.318 passed on 2026-11-05, but that client skipped `search_plans` because its input Schema contains top-level `allOf`; only the comparison tool was exposed and successfully called. See [Verification record](docs/verification.md) for the exact scope, current limitation, and commands. Native configuration support and SDK success do not certify the listed AI applications. A previous Python urllib request was denied by Cloudflare; account plans, workspace policy, client versions, and network routes can still restrict access.
+The pinned TypeScript and Python SDK examples passed a public read-only check on 2026-11-04: discovery, search, and comparison succeeded. After the live Schema compatibility fix on 2026-11-05, a fresh GitHub installation in Claude Code 2.1.318 exposed both tools; an actual search and comparison each returned `ok`. See [Verification record](docs/verification.md) for the tested revision, earlier failure, and commands. This verifies that client version and route, not every listed AI application or model provider. A previous Python urllib request was denied by Cloudflare; account plans, workspace policy, client versions, and network routes can still restrict access.
 
 ## 2. Use the tools
 

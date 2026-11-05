@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 — Unreleased
+## 1.0.0
 
 ### Added
 
@@ -12,10 +12,11 @@
 - Deterministic generation, metadata checks, and offline CI.
 - English client guides, tool/data references, and maintenance policies.
 
-### Known compatibility issue
+### Fixed
 
-Claude Code 2.1.318 installs and connects successfully but skips `search_plans` because the live input Schema contains top-level `allOf`. An actual comparison returned `ok`; complete two-tool acceptance is not yet satisfied. The pinned official TypeScript/Python SDKs support both tools.
+- Removed the unsupported top-level `allOf` wrapper from the live search input Schema and its public snapshots. Daily-mode required-field validation is retained.
+- A fresh GitHub installation in Claude Code 2.1.318 exposed both tools on 2026-11-05. One actual search and one comparison each returned `ok` over the modern protocol lane.
 
 ### Publication status
 
-Source repository: https://github.com/esimx-com/esimx-mcp. Original project material is MIT-licensed. GitHub private vulnerability reporting is enabled; domain verification remains pending. No tagged release, Registry registration, public directory listing, or named AI-application live certification is claimed.
+Source repository: https://github.com/esimx-com/esimx-mcp. Original project material is MIT-licensed. GitHub private vulnerability reporting is enabled. Registry domain verification, Registry registration, and public directory submissions are not included. Client acceptance is limited to the versions and routes recorded in [Verification](docs/verification.md).

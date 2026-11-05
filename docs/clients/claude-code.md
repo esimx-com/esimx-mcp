@@ -10,7 +10,7 @@
 | Session plugin | The same connection plus the travel skill, bundled under one plugin root. |
 | Skill only | Planning instructions; an existing eSIMX connection is still required. |
 
-**Known compatibility issue (2026-11-05):** installation and connection were tested with Claude Code 2.1.318. That client skipped `search_plans` because the live tool Schema uses top-level `allOf`, which its tool loader rejects. `compare_trip_options` was exposed and returned `ok` in an actual call. The official SDK examples support both tools. This is a partial client acceptance, not a full two-tool pass; see [Verification](../verification.md).
+**Verified on 2026-11-05:** a fresh GitHub installation in Claude Code 2.1.318 exposed and called both tools after the live Schema compatibility fix. Search and comparison each returned `ok`. The earlier top-level `allOf` rejection is resolved for this tested client and route; see the exact revision and limits in [Verification](../verification.md).
 
 ## 2. Add a project connection
 
@@ -48,7 +48,7 @@ For instructions only, copy the complete canonical [skill directory](../../skill
 1. Use `/mcp` to inspect the eSIMX connection and discovered tools.
 2. Ask: “Find Japan eSIM plans for 7 days and at least 5 GB total.”
 3. Ask for a Japan/South Korea comparison with explicit days and data for both stops.
-4. Check both tool names rather than assuming installation proves discovery. The recorded Claude Code 2.1.318 run exposed only comparison because of the Schema issue above. Do not mark the two-tool check as passed while search is missing. Results are USD catalog data, with no account or checkout action.
+4. Check both tool names and actual responses rather than assuming installation proves discovery. Do not mark the two-tool check as passed while either is missing. Results are USD catalog data, with no account or checkout action.
 5. To undo a project connection, run `claude mcp remove --scope project esimx` in that workspace. To stop the session plugin, exit and restart without `--plugin-dir`.
 
 For 403, 429, or missing tools, follow [Troubleshooting](../troubleshooting.md). Do not add OAuth or bypass trust prompts.
