@@ -34,6 +34,8 @@ The pinned TypeScript and Python SDK examples passed a public read-only check on
 
 ## 2. Use the tools
 
+New to MCP? Read the [introduction and client setup article](docs/articles/esimx-mcp.md).
+
 - “Find Japan eSIM plans for 7 days with at least 5 GB total.”
 - “Compare one plan for my trip against local plans: Japan for 4 days with 3 GB total, then South Korea for 3 days with 2 GB total.”
 
